@@ -1,0 +1,589 @@
+/* ========== 两套配色：火红（默认） / 叶绿，各含亮色与暗色 ========== */
+
+/* 亮色 · 火红 */
+:root,
+html[data-palette='firered'] {
+  --vp-c-brand-1: #e63946;
+  --vp-c-brand-2: #d62839;
+  --vp-c-brand-3: #b01e2e;
+  --vp-c-brand-soft: rgba(230, 57, 70, 0.14);
+}
+
+/* 亮色 · 叶绿 */
+html[data-palette='leafgreen'] {
+  --vp-c-brand-1: #2f9e44;
+  --vp-c-brand-2: #2b8a3e;
+  --vp-c-brand-3: #237032;
+  --vp-c-brand-soft: rgba(47, 158, 68, 0.14);
+}
+
+/* 暗色 · 火红（默认） */
+html.dark,
+html.dark[data-palette='firered'] {
+  --vp-c-brand-1: #ff6b75;
+  --vp-c-brand-2: #ff878f;
+  --vp-c-brand-3: #ffa8ae;
+  --vp-c-brand-soft: rgba(255, 107, 117, 0.16);
+}
+
+/* 暗色 · 叶绿 */
+html.dark[data-palette='leafgreen'] {
+  --vp-c-brand-1: #51cf66;
+  --vp-c-brand-2: #69db7c;
+  --vp-c-brand-3: #8ce99a;
+  --vp-c-brand-soft: rgba(81, 207, 102, 0.16);
+}
+
+:root {
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+  --vp-button-brand-border: var(--vp-c-brand-1);
+  --vp-button-brand-text: #fff;
+  --vp-button-brand-bg: var(--vp-c-brand-1);
+  --vp-button-brand-hover-border: var(--vp-c-brand-2);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: var(--vp-c-brand-3);
+  --vp-button-brand-active-bg: var(--vp-c-brand-3);
+  --vp-home-hero-name-color: var(--vp-c-brand-1);
+  --vp-home-hero-name-background: none;
+}
+
+/* ========== 简洁风格微调 ========== */
+:root {
+  --vp-border-radius: 8px;
+}
+
+.VPNavBar,
+.VPSidebar {
+  border-color: var(--vp-c-divider);
+}
+
+.VPNavBar .content-body {
+  backdrop-filter: none;
+}
+
+.VPNavBar.home.top {
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.VPNavBar:not(.has-sidebar) .content,
+.VPNavBar .wrapper .container {
+  border: none;
+}
+
+/* 首页 Hero 简洁化 */
+.VPHero .tagline {
+  font-size: 1.05rem;
+  color: var(--vp-c-text-2);
+}
+
+.VPFeature {
+  border-radius: var(--vp-border-radius);
+  transition: border-color 0.2s ease;
+}
+
+.VPFeature:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.VPFeature:hover .icon,
+.VPFeature:hover .title {
+  color: var(--vp-c-brand-1);
+}
+
+/* ========== 配色切换按钮 ========== */
+.palette-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: 0.5rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--vp-c-text-1);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.palette-toggle:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.palette-toggle .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--vp-c-brand-1);
+}
+
+/* ========== 宝可梦详情页底部翻页 ========== */
+.dex-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.dex-pager a {
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.dex-pager a:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+/* 交换 NPC 表格：版本 / 交出 / 获得列不换行 */
+.trade-table td:nth-child(2),
+.trade-table td:nth-child(3),
+.trade-table td:nth-child(4) {
+  white-space: nowrap;
+}
+
+/* ========== 宝可梦详情页 ========== */
+
+/* 官方属性配色（全站唯一的属性配色来源，属内容色不随主题变化）。
+   全站属性徽章（.t-badge 及 .type-chip 等）一律引用这里的变量，勿在组件内重复定义。
+   --t 为背景色；--t-fg 为文字色，浅色背景用深色文字以保证对比度 */
+.t-一般 { --t: #a8a77a; --t-fg: #3a3524; }
+.t-火 { --t: #ee8130; }
+.t-水 { --t: #6390f0; }
+.t-电 { --t: #f7d02c; --t-fg: #3a3524; }
+.t-草 { --t: #7ac74c; --t-fg: #3a3524; }
+.t-冰 { --t: #96d9d6; --t-fg: #3a3524; }
+.t-格斗 { --t: #c22e28; }
+.t-毒 { --t: #a33ea1; }
+.t-地面 { --t: #e2bf65; --t-fg: #3a3524; }
+.t-飞行 { --t: #a98ff3; --t-fg: #3a3524; }
+.t-超能 { --t: #f95587; }
+.t-虫 { --t: #a6b91a; --t-fg: #3a3524; }
+.t-岩石 { --t: #b6a136; --t-fg: #3a3524; }
+.t-幽灵 { --t: #735797; }
+.t-龙 { --t: #6f35fc; }
+.t-恶 { --t: #705746; }
+.t-钢 { --t: #b7b7ce; --t-fg: #3a3524; }
+.t-妖精 { --t: #d685ad; --t-fg: #3a3524; }
+
+/* 属性徽章基准（全站统一：筛选按钮/图鉴卡片/详情页 hero/招式表格通用）：
+   实心官方配色 pill；--t/--t-fg 由 .t-{属性} 提供 */
+.t-badge,
+.dex-type,
+.mv-type {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--t-fg, #fff);
+  background: var(--t, #888);
+}
+
+.dex-type {
+  padding: 0.15rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.mv-type {
+  padding: 0 0.45rem;
+  font-size: 0.75rem;
+}
+
+/* 招式分类着色 */
+.mv-cat {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.mv-cat-物理 { color: #e2593f; }
+.mv-cat-特殊 { color: #4b7bec; }
+.mv-cat-变化 { color: var(--vp-c-text-3); }
+
+/* 捕捉地点版本徽章 */
+.ver-chip {
+  display: inline-block;
+  padding: 0 0.45rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.ver-firered {
+  color: #e63946;
+  background: rgba(230, 57, 70, 0.12);
+  border: 1px solid rgba(230, 57, 70, 0.35);
+}
+
+.ver-leafgreen {
+  color: #2f9e44;
+  background: rgba(47, 158, 68, 0.12);
+  border: 1px solid rgba(47, 158, 68, 0.35);
+}
+
+html.dark .ver-leafgreen { color: #51cf66; }
+html.dark .ver-firered { color: #ff6b75; }
+
+.ver-other {
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+}
+
+/* 头部信息卡 */
+.dex-hero {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+}
+
+.dex-hero-sprite {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 152px;
+  height: 152px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg);
+}
+
+.dex-hero-sprite img {
+  width: 128px;
+  height: 128px;
+}
+
+.dex-hero-info {
+  flex: 1;
+  min-width: 220px;
+}
+
+.dex-hero-no {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--vp-c-text-2);
+}
+
+.dex-hero-name {
+  margin: 0.15rem 0 0.6rem;
+  padding: 0;
+  border: none;
+  font-size: 1.9rem;
+  line-height: 1.2;
+}
+
+.dex-hero-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.dex-cat {
+  padding: 0.15rem 0.6rem;
+  border: 1px dashed var(--vp-c-divider);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: var(--vp-c-text-2);
+}
+
+.dex-cat-legendary {
+  color: #c08a00;
+  border: 1px solid rgba(192, 138, 0, 0.5);
+  background: rgba(192, 138, 0, 0.1);
+}
+
+.dex-cat-mythical {
+  color: #a855f7;
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  background: rgba(168, 85, 247, 0.1);
+}
+
+.dex-hero-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.7rem;
+}
+
+.dex-meta-chip {
+  padding: 0.15rem 0.6rem;
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+}
+
+/* 无数据提示段落 */
+.dex-note {
+  color: var(--vp-c-text-2);
+}
+
+/* 种族值条形图 */
+.dex-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-width: 560px;
+  margin: 1rem 0;
+}
+
+.dex-stat-row {
+  display: grid;
+  grid-template-columns: 3rem 3rem 1fr;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dex-stat-label {
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+}
+
+.dex-stat-value {
+  font-weight: 600;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.dex-stat-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--vp-c-bg-soft);
+  overflow: hidden;
+}
+
+.dex-stat-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+
+/* 六项种族值独立配色（宝可梦官方属性条经典配色，亮暗色通用） */
+.dex-stat-hp .dex-stat-fill { background: #ff5959; }
+.dex-stat-atk .dex-stat-fill { background: #f5ac78; }
+.dex-stat-def .dex-stat-fill { background: #fae078; }
+.dex-stat-spa .dex-stat-fill { background: #9db7f5; }
+.dex-stat-spd .dex-stat-fill { background: #a7db8d; }
+.dex-stat-spe .dex-stat-fill { background: #fa92b2; }
+
+.dex-stat-total {
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--vp-c-divider);
+}
+
+.dex-stat-total .dex-stat-label,
+.dex-stat-total .dex-stat-value {
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+}
+
+/* 进化链卡片 */
+.dex-evo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.dex-evo-row,
+.dex-evo-branch {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dex-evo-children {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dex-evo-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3.5rem;
+  font-size: 1.1rem;
+  color: var(--vp-c-text-3);
+}
+
+.dex-evo-cond {
+  max-width: 8rem;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--vp-c-text-2);
+}
+
+/* 需要用 .vp-doc 前缀压过 .vp-doc a 的默认链接色与下划线 */
+.vp-doc .dex-evo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  width: 104px;
+  padding: 0.6rem 0.4rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.vp-doc .dex-evo-card:hover {
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+}
+
+.dex-evo-card img {
+  width: 72px;
+  height: 72px;
+}
+
+.dex-evo-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.dex-evo-no {
+  font-size: 0.72rem;
+  color: var(--vp-c-text-3);
+}
+
+.dex-evo-card.is-current {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 0 0 2px var(--vp-c-brand-soft);
+}
+
+.dex-evo-card.is-current .dex-evo-name {
+  color: var(--vp-c-brand-1);
+}
+
+/* 图鉴介绍引用块 */
+.dex-flavor {
+  margin: 0.75rem 0;
+  padding: 0.6rem 1rem;
+  border-left: 3px solid var(--vp-c-brand-1);
+  border-radius: 0 8px 8px 0;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+}
+
+/* ========== 招式详情页 ========== */
+
+/* 头部信息卡（结构与 dex-hero 一致，无精灵图） */
+.mv-hero {
+  margin: 1rem 0 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+}
+
+.mv-hero-no {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--vp-c-text-2);
+  text-transform: capitalize;
+}
+
+.mv-hero-name {
+  margin: 0.15rem 0 0.6rem;
+  padding: 0;
+  border: none;
+  font-size: 1.9rem;
+  line-height: 1.2;
+}
+
+.mv-hero-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* hero 内的属性/分类徽章放大到与 dex-type 一致 */
+.mv-hero .mv-type {
+  padding: 0.15rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.mv-hero .mv-cat {
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+/* TM/HM 编号徽章 */
+.mv-tm {
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--vp-c-brand-1);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.mv-hero-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.7rem;
+}
+
+.mv-meta-chip {
+  padding: 0.15rem 0.6rem;
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+}
+
+/* 可学习宝可梦表格内的精灵链接（inline 布局，压过 .vp-doc a 默认样式） */
+.vp-doc a.mv-poke {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.vp-doc a.mv-poke:hover {
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+}
+
+.mv-poke-sprite {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}

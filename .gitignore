@@ -1,0 +1,31 @@
+# 依赖
+node_modules/
+
+# VitePress 构建产物与缓存
+guide/.vitepress/dist/
+guide/.vitepress/cache/
+
+# ZCode 会话数据
+.zcode/
+.zcodeignore
+
+# 环境变量（模板文件除外）
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# 编辑器与 IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# 日志
+*.log
+
+# 构建中间产物
+*.tsbuildinfo
+
+# 操作系统
+.DS_Store
+Thumbs.db
